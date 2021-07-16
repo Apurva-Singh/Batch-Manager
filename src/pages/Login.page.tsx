@@ -62,7 +62,7 @@ const Login: FC<Props>=(props)=>{
     return(
         
 
-        <div className=" w-96 ml-auto mr-auto"> 
+        <div className=" w-96 ml-auto mr-auto max-h-screen"> 
         <div className=" flex flex-col">
            <h1 className="text-40">Log In to <span className="text-primary">CORK</span></h1>
             <p className="text-14 mt-2">New Here? <Link to="/signup"><span className=" text-primary border-b font-semibold border-b-primary">Create an account</span></Link></p>
@@ -98,9 +98,10 @@ const Login: FC<Props>=(props)=>{
             onBlur={handleBlur}
             placeholder="Username" />
             </div>
-            
-            { touched.email && <div className="text-red-400 mb-2">{emailError}</div>}
             <div className=" h-px bg-gray-100 mt-2"></div>
+            
+            { touched.email && <div className="text-red-400 ">{emailError}</div>}
+            
             </div>
        <div className="pb-25 mb-2">
           <div className="flex flex-row items-baseline pb-10">
@@ -116,21 +117,22 @@ const Login: FC<Props>=(props)=>{
             placeholder="Password" />
             </div>
            
-           
+            <div className=" h-px bg-gray-100 mt-2"></div>
             
             {
             touched.password &&<div className="text-red-400">{passwordError}</div>
                 }
-                 <div className=" h-px bg-gray-100 "></div>
+               
                  </div>
             <div className="flex flex-row justify-between">  
             <div className="flex flex-row items-center"> 
             <p className="text-14">Show Password </p>
-            <span><BsToggleOff className=" text-primary h-5 w-5 ml-2" /></span>
+            <span><BsToggleOff className=" text-primary h-6 w-6 ml-2" /></span>
             </div>
             <div>
             <button type="submit"
             className="disabled:opacity-50
+             disabled:
             shadow-xl rounded-md
             text-14
             text-white px-20 py-8 cursor-pointer hover:shadow-none bg-primary inline-block text-center  "
@@ -150,6 +152,7 @@ const Login: FC<Props>=(props)=>{
                 </div>
                 </div>
             </form>
+            <p className="absolute w-96 bottom-0 ">2020 All Rights Reserved. <span className="text-primary"><Link to="/dashboard">CORK</Link></span> is a product of Designreset. <span className="text-primary"><Link to="/dashboard">Cookie Preferences, Privacy, and Terms.</Link></span></p>
             </div>
             </div>
             

@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound.page';
 
 function App() {
   return (
+    <div className="font-sans">
   <BrowserRouter>
   <Switch>
     
@@ -25,6 +26,7 @@ function App() {
   
   </Switch>
   </BrowserRouter>
+  </div>
   );
 }
 

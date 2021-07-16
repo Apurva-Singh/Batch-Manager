@@ -16,6 +16,9 @@ module.exports = {
       2: "2px",
       px: "1px",
     },
+    fontFamily: {
+      sans: "'Nunito',sans-serif",
+    },
     fontSize: {
       40: "40px",
       14: "14px",
@@ -40,6 +43,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      opacity: ['disabled'],
     },
   },
   plugins: [],
