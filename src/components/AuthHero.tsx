@@ -10,8 +10,8 @@ const AuthHero: React.FC<Props>=(props)=>{
     }, []);
     
     return(
-        <div className="h-screen w-1/2 bg-black text-white">
-            Logo here
+        <div className="h-screen w-1/2 bg-black text-white bg-hero-auth bg-cover bg-center bg-75% bg-no-repeat">
+        
         </div>
     );
 };

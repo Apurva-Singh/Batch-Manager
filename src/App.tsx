@@ -11,7 +11,7 @@ function App() {
   <Switch>
     
     <Route path="/" exact>
-      <Redirect to="/auth/login"></Redirect>
+      <Redirect to="/login"></Redirect>
     </Route>
     <Route path={["/login", "/signup"]} exact>
       <Auth />
