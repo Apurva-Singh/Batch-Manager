@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { FC , memo } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {HiLockClosed, HiUser} from "react-icons/hi";
@@ -29,7 +28,7 @@ const Login: FC<Props>=(props)=>{
         }),
  
         onSubmit:(data)=>{
-            console.log("fomr submitting", data);
+            console.log("form submitting", data);
             setTimeout(() => {
             console.log("submitted successfully");
             history.push("/dashboard");
@@ -40,52 +39,6 @@ const Login: FC<Props>=(props)=>{
     
     const history= useHistory();
 
-    // const [data, setData]= useState({email:"", password:""});
-
-    // const handleChange=(event: React.ChangeEvent<HTMLInputElement>)=>{
-    //     const nameOfChangeInput= event.target.name;
-    //     setData({...data, [nameOfChangeInput]: event.target.value});
-    // }
-    // const handleBlur= (event:React.FocusEvent<HTMLInputElement> )=>{
-    //     setTouched({...touched,[event.target.name]: true});
-
-    // }
-    // const [touched, setTouched]= useState({email: false, password: false});
-
-    // const [submitting, setSubmitting]= useState(false);
-
-     
-
-    // let emailError="";
-    // let passwordError="";
-
-  
-
-    // const formValidator= yup.object().shape({
-    //     email: yup.string().required().email(),
-    //     password: yup.string().required().min(8),
-    // }) 
-    //     console.log("isFormValid", formValidator.isValidSync(data));
-
-
-    // try{
-    //     formValidator.validateSync(data);
-    // }
-    // catch(e){
-    //     console.log(e);
-    // }
-    // if(!data.email){
-    //     emailError="Email is required";
-    // }
-    // else if(data.email && !(data.email.endsWith("gmail.com"))){
-    //     emailError="Please enter a valid email";
-    // }
-    // if(!data.password){
-    //     passwordError="Password is required";
-    // }
-    // else if(data.password.length < 8){
-    //     passwordError="Password should be atleast 8 characters long.";
-    // }
     return(
         
 

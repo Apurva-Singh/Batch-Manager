@@ -21,6 +21,7 @@ module.exports = {
     },
     fontSize: {
       40: "40px",
+      36:"36px",
       14: "14px",
     },
     colors: {
@@ -38,6 +39,11 @@ module.exports = {
       outline: {
         indigo: "#4361ee",
       },
+      maxWidth: {
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+       }
     
     },
   },
