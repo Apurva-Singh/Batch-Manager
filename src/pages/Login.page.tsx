@@ -6,59 +6,86 @@ import {FaSpinner} from "react-icons/fa";
 import {BsToggleOff} from "react-icons/bs";
 
 import * as yup from "yup";
+import { useFormik } from "formik"; 
 
 interface Props{
  
 }
 
 const Login: FC<Props>=(props)=>{
-    const [data, setData]= useState({email:"", password:""});
-
-    const handleChange=(event: React.ChangeEvent<HTMLInputElement>)=>{
-        const nameOfChangeInput= event.target.name;
-        setData({...data, [nameOfChangeInput]: event.target.value});
-    }
-    const handleBlur= (event:React.FocusEvent<HTMLInputElement> )=>{
-        setTouched({...touched,[event.target.name]: true});
-
-    }
-    const [touched, setTouched]= useState({email: false, password: false});
-
-    const [submitting, setSubmitting]= useState(false);
-
+    const {handleSubmit,
+        getFieldProps, 
+        touched,
+        isSubmitting,
+        errors,
+        isValid}= useFormik({
+        initialValues:{
+            email:"",
+            password:"",
+        },
+        validationSchema: yup.object().shape({
+            email: yup.string().required().email(),
+            password: yup.string().required().min(8,({min})=> `Atleast ${min} characters!`),
+        }),
+ 
+        onSubmit:(data)=>{
+            console.log("fomr submitting", data);
+            setTimeout(() => {
+            console.log("submitted successfully");
+            history.push("/dashboard");
+            }, 5000);
+        }
+        
+    });
+    
     const history= useHistory();
+
+    // const [data, setData]= useState({email:"", password:""});
+
+    // const handleChange=(event: React.ChangeEvent<HTMLInputElement>)=>{
+    //     const nameOfChangeInput= event.target.name;
+    //     setData({...data, [nameOfChangeInput]: event.target.value});
+    // }
+    // const handleBlur= (event:React.FocusEvent<HTMLInputElement> )=>{
+    //     setTouched({...touched,[event.target.name]: true});
+
+    // }
+    // const [touched, setTouched]= useState({email: false, password: false});
+
+    // const [submitting, setSubmitting]= useState(false);
+
      
 
-    let emailError="";
-    let passwordError="";
+    // let emailError="";
+    // let passwordError="";
 
   
 
-    const formValidator= yup.object().shape({
-        email: yup.string().required().email(),
-        password: yup.string().required().min(8),
-    }) 
-        console.log("isFormValid", formValidator.isValidSync(data));
+    // const formValidator= yup.object().shape({
+    //     email: yup.string().required().email(),
+    //     password: yup.string().required().min(8),
+    // }) 
+    //     console.log("isFormValid", formValidator.isValidSync(data));
 
 
-    try{
-        formValidator.validateSync(data);
-    }
-    catch(e){
-        console.log(e);
-    }
-    if(!data.email){
-        emailError="Email is required";
-    }
-    else if(data.email && !(data.email.endsWith("gmail.com"))){
-        emailError="Please enter a valid email";
-    }
-    if(!data.password){
-        passwordError="Password is required";
-    }
-    else if(data.password.length < 8){
-        passwordError="Password should be atleast 8 characters long.";
-    }
+    // try{
+    //     formValidator.validateSync(data);
+    // }
+    // catch(e){
+    //     console.log(e);
+    // }
+    // if(!data.email){
+    //     emailError="Email is required";
+    // }
+    // else if(data.email && !(data.email.endsWith("gmail.com"))){
+    //     emailError="Please enter a valid email";
+    // }
+    // if(!data.password){
+    //     passwordError="Password is required";
+    // }
+    // else if(data.password.length < 8){
+    //     passwordError="Password should be atleast 8 characters long.";
+    // }
     return(
         
 
@@ -68,39 +95,19 @@ const Login: FC<Props>=(props)=>{
             <p className="text-14 mt-2">New Here? <Link to="/signup"><span className=" text-primary border-b font-semibold border-b-primary">Create an account</span></Link></p>
             <div className="mt-10 ">
             <form 
-            onSubmit={(event)=>{
-                event.preventDefault();
-                if(emailError || passwordError){
-                    console.log("Invalid input")
-                    return;
-                }
-
-                setSubmitting(true);
-                console.log("loging started with  ",data);
-              
-                setTimeout(() => {
-                    console.log("loging successful ");
-
-                    history.push("/dashboard");
-                   
-                }, 5000);
-              
-             
-            }}
+            onSubmit={handleSubmit}
             >
             <div className="pb-25">
             <div className="flex flex-row items-baseline pb-10">
             <HiUser className="text-indigo-500 h-5 w-5"/>
             <label htmlFor="email-address" className="sr-only">Email address</label>
-            <input className="pl-8 focus:outline-none" type="email" id="email" name="email" autoComplete="email"
-            value={data.email} 
-            onChange={handleChange}
-            onBlur={handleBlur}
+            <input className="pl-8 focus:outline-none" type="email" id="email" autoComplete="email"
+           {...getFieldProps("email")}
             placeholder="Username" />
             </div>
             <div className=" h-px bg-gray-100 mt-2"></div>
             
-            { touched.email && <div className="text-red-400 ">{emailError}</div>}
+            { touched.email && <div className="text-red-400 ">{errors.email}</div>}
             
             </div>
        <div className="pb-25 mb-2">
@@ -109,18 +116,16 @@ const Login: FC<Props>=(props)=>{
            <label htmlFor="password" className="sr-only">password </label>
             <input className=" pl-8 focus:outline-none mt-4" 
             type="password" id="password" 
-            name="password" 
-            autoComplete="cureent-password" 
-            value={data.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
+         
+            autoComplete="current-password" 
+            {...getFieldProps("password")}
             placeholder="Password" />
             </div>
            
             <div className=" h-px bg-gray-100 mt-2"></div>
             
             {
-            touched.password &&<div className="text-red-400">{passwordError}</div>
+            touched.password &&<div className="text-red-400">{errors.password}</div>
                 }
                
                  </div>
@@ -136,12 +141,12 @@ const Login: FC<Props>=(props)=>{
             shadow-xl rounded-md
             text-14
             text-white px-20 py-8 cursor-pointer hover:shadow-none bg-primary inline-block text-center  "
-            disabled={!formValidator.isValidSync(data)} >
+            disabled={!isValid} >
             Login
             </button>
             </div>
             </div>
-            {submitting && <FaSpinner className="mt-5 animate-spin "></FaSpinner>}
+            {isSubmitting && <FaSpinner className="mt-5 animate-spin "></FaSpinner>}
             <div className="flex flex-col mt-14 items-center">
                 <div className="mb-2">
                 <input type="checkbox" name="loggedin" className=" bg-gray-300 outline-none"/>
