@@ -50,7 +50,7 @@ const Login: FC<Props> = (props) => {
         <p className="text-14 mt-2">
           New Here?{" "}
           <Link to="/signup">
-            <span className=" text-primary border-b font-semibold border-b-primary">
+            <span className=" text-primary border-b font-semibold border-primary">
               Create an account
             </span>
           </Link>
