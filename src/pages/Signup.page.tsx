@@ -56,7 +56,7 @@ const Signup: FC<Props> = (props) => {
         <div className="mt-10 ">
           <form onSubmit={handleSubmit}>
 
-            <div className="pb-25">
+            <div className="pb-20">
               <div className="flex flex-row items-baseline pb-10">
                 <HiUser className="text-indigo-500 h-5 w-5" />
                 <label htmlFor="username" className="sr-only">
@@ -121,7 +121,9 @@ const Signup: FC<Props> = (props) => {
             <div className="mb-6">
               <input
                 type="checkbox"
-                name="loggedin"
+                required 
+                name="terms"
+                value="terms"
                 className=" bg-gray-300 outline-none"
               />
               <label htmlFor="loggedin" className="text-gray-400 pl-10">
@@ -146,6 +148,7 @@ const Signup: FC<Props> = (props) => {
             text-14
             text-white px-20 py-8 cursor-pointer hover:shadow-none bg-primary inline-block text-center  "
                   disabled={!isValid}
+                  
                 >
                   Get Started!
                 </button>
@@ -156,7 +159,7 @@ const Signup: FC<Props> = (props) => {
             )}
           </form>
           <div className="">
-          <p className="sm:absolute md:w-96 mt-8 sm:mt- bottom-0 ">
+          <p className="sm:absolute md:w-96 mt-8 sm:mt-0 bottom-0 ">
             2020 All Rights Reserved.{" "}
             <span className="text-primary">
               <Link to="/dashboard">CORK</Link>
