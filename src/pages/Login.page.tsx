@@ -6,6 +6,7 @@ import { BsToggleOff } from "react-icons/bs";
 
 import * as yup from "yup";
 import { useFormik } from "formik";
+import ToggleSwitch from "../ToggleSwicth";
 
 interface Props {}
 
@@ -100,13 +101,8 @@ const Login: FC<Props> = (props) => {
                 <div className="text-red-400">{errors.password}</div>
               )}
             </div>
-            <div className="flex flex-col sm:flex-rowjustify-between">
-              <div className="flex flex-row items-center">
-                <p className="text-14">Show Password </p>
-                <span>
-                  <BsToggleOff className=" text-primary h-6 w-6 ml-2" />
-                </span>
-              </div>
+            <div className="flex flex-col sm:flex-row justify-between">
+              <ToggleSwitch />
               <div>
                 <button
                   type="submit"
@@ -133,7 +129,7 @@ const Login: FC<Props> = (props) => {
                   className=" bg-gray-300 outline-none"
                 />
                 <label htmlFor="loggedin" className="text-gray-400 pl-10">
-                  Keep me logged on
+                  Keep me logged in
                 </label>
               </div>
               <div className="mt-4">

@@ -6,6 +6,7 @@ import { BsToggleOff } from "react-icons/bs";
 
 import * as yup from "yup";
 import { useFormik } from "formik";
+import ToggleSwitch from "../ToggleSwicth";
 
 interface Props {}
 
@@ -132,12 +133,7 @@ const Signup: FC<Props> = (props) => {
               </label>
             </div>
             <div className="flex flex-col sm:flex-row justify-between">
-              <div className="flex flex-row items-center">
-                <p className="text-14">Show Password </p>
-                <span>
-                  <BsToggleOff className=" text-primary h-6 w-6 ml-2" />
-                </span>
-              </div>
+               <ToggleSwitch />
               <div>
                 <button
                   type="submit"
