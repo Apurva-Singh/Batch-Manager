@@ -6,7 +6,7 @@ interface Props{
 
 const Sidebar: React.FC<Props>=(props)=>{
     return(
-        <div className="h-screen w-80 bg-gray-400">
+        <div className="h-screen w-80 bg-gray-400 hidden">
          This is a sidebar
         </div>
     );

@@ -31,6 +31,7 @@ module.exports = {
       indigo: colors.indigo,
       gray: colors.gray,
       red:colors.red,
+      secondary: "#0e1726",
     },
     extend: {
       backgroundImage: (theme) => ({
