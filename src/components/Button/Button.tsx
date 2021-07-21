@@ -23,6 +23,7 @@ const Button: React.FC<Props>=({children,theme, className,...rest})=>{
 };
 Button.defaultProps={
     theme: 'primary',
+    
 }
  
 export default Button;
