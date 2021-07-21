@@ -7,6 +7,7 @@ import { BsToggleOff } from "react-icons/bs";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import ToggleSwitch from "../ToggleSwicth";
+import Button from "../components/Button/Button";
 
 interface Props {}
 
@@ -104,18 +105,7 @@ const Login: FC<Props> = (props) => {
             <div className="flex flex-col sm:flex-row justify-between">
               <ToggleSwitch />
               <div>
-                <button
-                  type="submit"
-                  className="disabled:opacity-50
-            mt-4
-            sm:mt-0
-            shadow-xl rounded-md
-            text-14
-            text-white px-20 py-8 cursor-pointer hover:shadow-none bg-primary inline-block text-center  "
-                  disabled={!isValid}
-                >
-                  Login
-                </button>
+                  <Button theme="primary" >Login</Button>
               </div>
             </div>
             {isSubmitting && (
