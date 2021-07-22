@@ -12,7 +12,7 @@ export const Main:any = Template.bind({});
 
 Main.args={
     children: "Login",
-    disabled:false,
+    disabled:true,
     className:"",
     type:"submit",
     btnType: "solid",

@@ -9,5 +9,6 @@ export default {
 export const Main= (args: any) => <Alert{...args}></Alert>
 Main.args={
     theme:"success",
+    children:"",
 }
  
