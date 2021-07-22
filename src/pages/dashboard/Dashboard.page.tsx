@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AvatarBox from "../../components/Avatars/AvatarBox";
 import DailySalesCard from "./DailySalesCard";
 import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";

@@ -1,5 +1,4 @@
-import React, { Children } from "react";
-import AvatarStack from "./AvatarStack";
+import React from "react";
 
 interface Props{
  size: string;

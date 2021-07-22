@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import AvatarContent from "./AvatarContent";
+import React from "react";
 
 
 interface Props{
