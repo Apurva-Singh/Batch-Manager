@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AvatarBox from "../../components/Avatars/AvatarBox";
-import AvatarContent from "../../components/Avatars/AvatarContent";
-import AvatarStack from "../../components/Avatars/AvatarStack";
+import DailySalesCard from "./DailySalesCard";
 import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
 
@@ -20,7 +19,8 @@ const Dashboard: React.FC<Props>=(props)=>{
          <Link to="/recordings">Go to <span className="text-indigo-400">Recordings</span>
          </Link>
          </p>
-      <AvatarBox />
+         <DailySalesCard />
+   
         </div>
     );
 };

@@ -20,19 +20,37 @@ const AvatarStack: React.FC<Props>=({children})=>{
             toDisplay=children.slice(0,maxAvatar); 
     }
     let remaining= children.length- maxAvatar;
-    // if (remaining < 1) return null;
-  
-    // return <AvatarContent  value={`+${remaining}`} color="gray" />;  
+
+    let sizeClass="";
+    let sizeToDisplay='';
                 return (
                    <div className="flex flex-row -space-x-2 items-center ">
-                         {toDisplay.map((child, id) => (
-                    
-                      <div className=" hover:translate-y-1 cursor-pointer transform  ">
-                    <img src={child.props.img} alt="avatar" className={"h-16 w-16 rounded-full  border-2 border-white"}/>
+                         {toDisplay.map((child, id) => {
+                              sizeToDisplay= child.props.size;
+                              if(sizeToDisplay==="sm"){
+                                          sizeClass="h-4 w-4"
+                                      }
+                                      else if(sizeToDisplay==="md"){
+                                          sizeClass="h-6 w-6"
+                                      }
+                                      else if(sizeToDisplay==="lg"){
+                                          sizeClass="h-10 w-10"
+                                      }
+                                      else if(sizeToDisplay==="xl"){
+                                          sizeClass=" h-20 w-20"
+                                      }
+                             
+                      return(
+                              <div className=" hover:translate-y-1 cursor-pointer transform  ">
+                     
+                          
+                    <img src={child.props.img} alt="avatar" className={" rounded-full  border-2 border-white"+ sizeClass}/>
                     
 
                 </div>                
-                         ))}
+                         )}
+                         )
+                      }
                        {remaining>0 ? <div className=" z-10 text-14 p-2 px-8 text-blue-400 bg-gray-200 rounded-lg h-6">+{ remaining} more</div>: ''}
 
 

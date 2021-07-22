@@ -20,7 +20,7 @@ const AvatarContent: React.FC<Props>=({children})=>{
     );
 };
 AvatarContent.defaultProps={
-    size: "sm" ,
+    size: "lg" ,
 }
 
 export default AvatarContent;
