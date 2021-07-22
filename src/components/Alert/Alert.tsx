@@ -1,4 +1,5 @@
 import React from "react";
+import { IoMdClose } from "react-icons/io";
 
 interface Props{
  theme: 'primary' | 'warning' | 'success' | 'info' | 'error';
@@ -23,10 +24,10 @@ const Alert: React.FC<Props>=({theme,children})=>{
         themeClass= " bg-gray-200 text-gray-400 hover:text-grau-600";
     }
     return(
-        <div className="flex">
-         <div className={" h-10 w-full p-8 rounded-sm "+ themeClass}>
-             <p>{theme}! Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
-         <button></button>
+        <div className="">
+         <div className={" h-10 w-full p-8 rounded-sm flex justify-between"+ themeClass}>
+             <p>{theme}! Lorem ipsum dolor sit, amet consectetur adipisicng elit. </p>
+                      <button> <IoMdClose /> </button>
          </div>
         </div>
     );

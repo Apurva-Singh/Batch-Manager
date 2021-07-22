@@ -28,6 +28,9 @@ const Input: React.FC<Props>=({touched, error,className,id,placeholder, ...rest}
     );
 };
 Input.defaultProps={
+    touched: false,
+    error:"",
+    
 }
 
 export default Input;
