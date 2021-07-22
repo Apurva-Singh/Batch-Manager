@@ -8,7 +8,7 @@ export default {
  
 export const Main= (args: any) => <ProgressBar{...args}></ProgressBar>
 Main.args={
-   width:30,
+   progress:30,
    theme:'primary',
 }
  

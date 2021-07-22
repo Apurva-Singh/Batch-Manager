@@ -1,6 +1,5 @@
 import React from "react";
 import { InputHTMLAttributes } from "react";
-import { HiUser } from "react-icons/hi";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>{
  touched?: boolean;
@@ -13,7 +12,6 @@ const Input: React.FC<Props>=({touched, error,className,id,placeholder, ...rest}
     return(
      <div>
             <div className="flex flex-row items-baseline">
-            <HiUser className="text-indigo-500 "/>
             { id && placeholder && ( <label htmlFor={id} className="sr-only">{placeholder}</label> )}
             <input className="pl-2 focus:outline-none"
             {...rest} 

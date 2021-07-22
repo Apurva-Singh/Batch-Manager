@@ -16,6 +16,7 @@ const Login: FC<Props> = (props) => {
     getFieldProps,
     touched,
     isSubmitting,
+    isValid,
     errors,
   } = useFormik({
     initialValues: {
@@ -103,7 +104,7 @@ const Login: FC<Props> = (props) => {
             <div className="flex flex-col sm:flex-row justify-between">
               <ToggleSwitch />
               <div>
-                  <Button theme="primary" btnType="solid" >Login</Button>
+                  <Button theme="primary" btnType="solid" isValid={isValid} >Login</Button>
               </div>
             </div>
             {isSubmitting && (

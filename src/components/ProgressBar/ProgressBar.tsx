@@ -1,11 +1,11 @@
 import React from "react";
 
 interface Props{
- width: number;
+ progress: number;
  theme: 'primary' | 'warning' | 'dark' | undefined;
 }
 
-const ProgressBar: React.FC<Props>=({width,theme})=>{
+const ProgressBar: React.FC<Props>=({progress,theme})=>{
   let themeClass="";
   let bgThemeClass="";
   if(theme==='primary'){
@@ -20,17 +20,20 @@ const ProgressBar: React.FC<Props>=({width,theme})=>{
     bgThemeClass=" bg-gray-200";
     themeClass=" bg-gray-800";
   }
-        const widthClass= `w-${width}%`;
+        const widthStyle=`${progress}%`;  
+        const style ={
+          width: widthStyle,
+        }
     return(
         <div className="relative pt-1">
         <div className={"overflow-hidden h-2 mb-4 text-xs flex rounded"+ bgThemeClass}>
-          <div className={"shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center " + widthClass + themeClass}></div>
+          <div style={style} className={"shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center " + themeClass}></div>
         </div>
       </div>
     );
 };
 ProgressBar.defaultProps={
-    width:30,
+    progress:30,
     theme:'primary',
 }
 

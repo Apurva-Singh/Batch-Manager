@@ -6,9 +6,10 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>{
  children: string;
  type?: 'submit'|'reset' | 'button' | undefined;
  btnType: 'solid' | 'outline';
+ isValid: boolean;
 }
  
-const Button: React.FC<Props>=({children,theme,btnType, className,...rest})=>{
+const Button: React.FC<Props>=({children,theme,btnType, isValid, className,...rest})=>{
     let themeClasses='';
     if(btnType==='solid'){
      themeClasses = theme === 'primary'? ' shadow-xl bg-primary hover:bg-indigo-700 text-white ' : ' shadow-xl bg-gray-600 hover:bg-gray-700 text-white';
@@ -19,10 +20,11 @@ const Button: React.FC<Props>=({children,theme,btnType, className,...rest})=>{
     }
     return(
         <div>
+          
            <button
                {...rest}
-                  className={"disabled:opacity-50 mt-4 sm:mt-0 rounded-md text-14 px-20 py-8 cursor-pointer hover:shadow-none inline-block text-center" + themeClasses +" "+className}
-                 
+                  className={"disabled:opacity-50 disabled:bg-gray-200 mt-4 sm:mt-0 rounded-md text-14 px-20 py-8 cursor-pointer hover:shadow-none inline-block text-center" + themeClasses +" "+className}
+                 disabled={!isValid}
                 >
                   {children}
                 </button>

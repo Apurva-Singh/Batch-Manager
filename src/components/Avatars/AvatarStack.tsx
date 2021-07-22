@@ -1,8 +1,11 @@
 import React from "react";
+import AvatarContent from "./AvatarContent";
 
 
 interface Props{
-    children: React.ReactElement[];
+    children?: React.ReactElement[];
+    avatarUrl:string[];
+    sizeToDisplay: string;
 }
 
 
@@ -10,44 +13,52 @@ interface Props{
 
 
 const DEFAULT_MAX_AVATARS = 4;
-const AvatarStack: React.FC<Props>=({children})=>{
+const AvatarStack: React.FC<Props>=({children, avatarUrl, sizeToDisplay})=>{
+
     
-    const maxAvatar= DEFAULT_MAX_AVATARS;
-    let toDisplay:React.ReactElement[]=[];
-    const noOfAvatar= children.length;
-    if(noOfAvatar> maxAvatar){
-            toDisplay=children.slice(0,maxAvatar); 
+    const maxAvatar= DEFAULT_MAX_AVATARS; //4
+    let toDisplay:string[]=[];
+    const noOfAvatar= avatarUrl.length; // 5
+    if(noOfAvatar>= maxAvatar){     // 5>4
+
+            toDisplay=avatarUrl.slice(0,maxAvatar); //
+            console.log(toDisplay);
     }
-    let remaining= children.length- maxAvatar;
+    else{
+        toDisplay= avatarUrl;
+    }
+    let remaining= avatarUrl.length- maxAvatar;
 
     let sizeClass="";
-    let sizeToDisplay='';
                 return (
+                   
                    <div className="flex flex-row -space-x-2 items-center ">
-                         {toDisplay.map((child, id) => {
-                              sizeToDisplay= child.props.size;
+                       
+                       {  console.log("Avatar stack here " , sizeToDisplay , " ", toDisplay)} 
+                       
+                         {toDisplay.map((avatar, id) => {
+                             
                               if(sizeToDisplay==="sm"){
-                                          sizeClass="h-4 w-4"
+                                          sizeClass=" h-8 w-8"
                                       }
                                       else if(sizeToDisplay==="md"){
-                                          sizeClass="h-6 w-6"
+                                          sizeClass=" h-12 w-12"
                                       }
                                       else if(sizeToDisplay==="lg"){
-                                          sizeClass="h-10 w-10"
-                                      }
-                                      else if(sizeToDisplay==="xl"){
                                           sizeClass=" h-20 w-20"
                                       }
-                             
-                      return(
-                              <div className=" hover:translate-y-1 cursor-pointer transform  ">
-                     
-                          
-                    <img src={child.props.img} alt="avatar" className={" rounded-full  border-2 border-white"+ sizeClass}/>
-                    
+                                      else if(sizeToDisplay==="xl"){
+                                          sizeClass=" h-24 w-24"
+                                      }
 
-                </div>                
+                                      
+                      return(
+                          <div>
+                            <AvatarContent sizeClass={sizeClass} imgUrl={avatar} /> 
+                            </div>
+                              
                          )}
+
                          )
                       }
                        {remaining>0 ? <div className=" z-10 text-14 p-2 px-8 text-blue-400 bg-gray-200 rounded-lg h-6">+{ remaining} more</div>: ''}

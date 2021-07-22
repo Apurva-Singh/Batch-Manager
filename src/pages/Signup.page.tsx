@@ -6,6 +6,7 @@ import { FaSpinner } from "react-icons/fa";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import ToggleSwitch from "../ToggleSwicth";
+import AvatarStack from "../components/Avatars/AvatarStack";
 
 interface Props {}
 
@@ -113,7 +114,7 @@ const Signup: FC<Props> = (props) => {
               </div>
 
               <div className=" h-px bg-gray-100 mt-1"></div>
-
+                
               {touched.password && (
                 <div className="text-red-400">{errors.password}</div>
               )}
@@ -153,6 +154,14 @@ const Signup: FC<Props> = (props) => {
               <FaSpinner className="mt-5 animate-spin "></FaSpinner>
             )}
           </form>
+          <AvatarStack avatarUrl={
+            [
+        "https://i.natgeofe.com/n/f0dccaca-174b-48a5-b944-9bcddf913645/01-cat-questions-nationalgeographic_1228126.jpg",
+        "https://static.scientificamerican.com/sciam/cache/file/92E141F8-36E4-4331-BB2EE42AC8674DD3_source.jpg",
+        "https://i.natgeofe.com/n/f0dccaca-174b-48a5-b944-9bcddf913645/01-cat-questions-nationalgeographic_1228126.jpg",
+        "https://static.scientificamerican.com/sciam/cache/file/92E141F8-36E4-4331-BB2EE42AC8674DD3_source.jpg",
+        "https://static.scientificamerican.com/sciam/cache/file/92E141F8-36E4-4331-BB2EE42AC8674DD3_source.jpg"
+    ]} sizeToDisplay="lg" ></AvatarStack>
           <div className="">
           <p className="sm:absolute md:w-96 mt-8 sm:mt-0 bottom-0 ">
             2020 All Rights Reserved.{" "}
