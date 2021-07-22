@@ -6,7 +6,7 @@ export default {
     component: Button
 }; 
  
- const Template = (args: any) => <Button {...args}></Button>
+ const Template = (args: any) => <Button {...args} ></Button>
         
 export const Main:any = Template.bind({});
 
@@ -15,5 +15,6 @@ Main.args={
     disabled:false,
     className:"",
     type:"submit",
+    btnType: "solid",
 }
  
