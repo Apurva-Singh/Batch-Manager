@@ -20,7 +20,11 @@ const ProgressBar: React.FC<Props>=({progress,theme})=>{
     bgThemeClass=" bg-gray-200";
     themeClass=" bg-gray-800";
   }
-        const widthStyle=`${progress}%`;  
+        let widthStyle=`${progress}%`;  
+        if(progress>100){
+          widthStyle= '100%';
+          console.error("Progress can't be more than 100");
+        }
         const style ={
           width: widthStyle,
         }

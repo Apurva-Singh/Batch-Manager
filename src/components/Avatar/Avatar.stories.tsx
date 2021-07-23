@@ -19,7 +19,8 @@ export default {
  
 export const Main= (args: any) => <Avatar{...args}></Avatar>
 Main.args={
-    size: "xl"
+    size: "xl",
+    onlineStatus:"online",
    
 }
  
