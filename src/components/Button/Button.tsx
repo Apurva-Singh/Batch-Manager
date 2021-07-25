@@ -6,7 +6,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>{
  children: string;
  type?: 'submit'|'reset' | 'button' | undefined;
  btnType: 'solid' | 'outline';
- isValid: boolean;
+ isValid?: boolean;
 }
  
 const Button: React.FC<Props>=({children,theme,btnType, isValid, className,...rest})=>{
@@ -33,7 +33,7 @@ const Button: React.FC<Props>=({children,theme,btnType, isValid, className,...re
 };
 Button.defaultProps={
     theme: 'primary',
-    
+    isValid: true,
 }
  
 export default Button;
