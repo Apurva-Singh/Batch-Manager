@@ -8,8 +8,13 @@ import { useFormik } from "formik";
 import ToggleSwitch from "../../ToggleSwicth";
 import Button from "../../components/Button/Button";
 import { login } from '../../api/auth';
+import { User } from "../../models/User";
 
-interface Props {}
+interface Props {
+onLogin: (user: User) => void;
+
+
+}
 
 const Login: FC<Props> = (props) => {
   const {
@@ -33,7 +38,8 @@ const Login: FC<Props> = (props) => {
     }),
 
     onSubmit: (data) => {
-     login(data).then(()=>{
+     login(data).then((u)=>{
+       props.onLogin(u!);
        history.push('/dashboard');
      });
     },

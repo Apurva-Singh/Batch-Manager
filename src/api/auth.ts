@@ -27,10 +27,19 @@ export const login =(data: LoginData)=>{
     .then((response) => {
         console.log("token here", response.data.token);
         localStorage.setItem(LOGIN_TOKEN, response.data.token);
+        return response.data.user;
     });
     };
 
 export const logout = () =>{
     localStorage.removeItem(LOGIN_TOKEN);
+};
+
+interface MeResponse{
+    data:User;
 }
 
+export const me = () => {
+    const url= BASE_URL+ "/me";
+    return axios.get<MeResponse>(url).then(response => response.data.data);
+};

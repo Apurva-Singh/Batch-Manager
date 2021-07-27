@@ -6,13 +6,14 @@ import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
 import { getGroup, logout } from '../../../api';
 import GroupDisplay from "./GroupDisplay";
+import { User } from "../../../models/User";
 
 
 interface Props{
- 
+    user: User;
 }
 
-const Dashboard: React.FC<Props>=(props)=>{
+const Dashboard: React.FC<Props>=({user})=>{
     
     const [reload,setReload]= useState(0);
     const [users, setUsers] = useState<any>([]);
@@ -45,6 +46,7 @@ const Dashboard: React.FC<Props>=(props)=>{
          This is a Dashboard page.
          <Link to="/recordings">Go to <span className="text-indigo-400">Recordings</span>
          </Link>
+      
          </p>
          <div className="flex space-x-2 items-center max-w-xl justify-center     mx-auto">
             <input type="text" id="search" placeholder="Search here.." className="px-2 border-2 rounded-md h-10 mt-4 sm:mt-1 ml-4 focus:outline-none" 
@@ -57,6 +59,8 @@ const Dashboard: React.FC<Props>=(props)=>{
              >Search</Button>
         </div>
         <div className="flex flex-col mt-8 ">
+            
+         <div className=" m-auto text-36">Welcome! <span className="text-primary">{user.first_name} </span></div>
         { users.length ?  <div>
         <h1 className="flex m-auto justify-center text-primary font-bold text-36">Groups</h1>
             { users.map((user: any)=>
