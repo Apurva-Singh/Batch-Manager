@@ -19,11 +19,7 @@ module.exports = {
     fontFamily: {
       sans: "'Nunito',sans-serif",
     },
-    fontSize: {
-      40: "40px",
-      36:"36px",
-      14: "14px",
-    },
+ 
     colors: {
       primary: "#4361ee",
       black: colors.black,
@@ -60,8 +56,13 @@ module.exports = {
         '100%':'100%',
       },
       inset: {
-        26: '103px',
-      }
+        26: '104px',
+      },
+      fontSize: {
+        40: "40px",
+        36:"36px",
+        14: "14px",
+      },
     
     },
   },

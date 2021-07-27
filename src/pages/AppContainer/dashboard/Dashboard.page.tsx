@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Button from "../../../components/Button/Button";
 // import DailySalesCard from "./DailySalesCard";
 import Nav from './Nav';
@@ -39,17 +39,17 @@ const Dashboard: React.FC<Props>=({user})=>{
  };
 
     return(
-         <div className="h-screen">
+         <div className="bg-gray-200">
             <Nav />
             <SecondaryNav />
-            <p>
+            {/* <p>
          This is a Dashboard page.
          <Link to="/recordings">Go to <span className="text-indigo-400">Recordings</span>
          </Link>
       
-         </p>
-         <div className="flex space-x-2 items-center max-w-xl justify-center     mx-auto">
-            <input type="text" id="search" placeholder="Search here.." className="px-2 border-2 rounded-md h-10 mt-4 sm:mt-1 ml-4 focus:outline-none" 
+         </p> */}
+         <div className="flex space-x-2 items-center max-w-xl justify-center pt-20 mx-auto">
+            <input type="text" id="search" placeholder="Search here.." className="px-2 border-2 rounded-lg h-10 mt-4 sm:mt-1 ml-4 focus:outline-none bg-gray-50 border-gray-400" 
            
             onChange={handleChange}/>
              <Button theme="primary" btnType="outline"
@@ -61,7 +61,7 @@ const Dashboard: React.FC<Props>=({user})=>{
         <div className="flex flex-col mt-8 ">
             
          <div className=" m-auto text-36">Welcome! <span className="text-primary">{user.first_name} </span></div>
-        { users.length ?  <div>
+        { users.length ?  <div className="-z-99">
         <h1 className="flex m-auto justify-center text-primary font-bold text-36">Groups</h1>
             { users.map((user: any)=>
         

@@ -11,7 +11,8 @@ interface Props{
 const GroupDisplay: React.FC<Props>=({id,imgUrl, name, description})=>{
 
     return(
-        <div className="flex text-xs md:text-lg h-20 space-x-4 w-full px-20 items-center max-w-xl md:m-auto even:bg-gray-100 hover:bg-gray-200">
+
+        <div className="flex rounded-md shadow-sm transform hover:-translate-y-1 hover:text-blue-800 ease-in-out text-xs md:text-lg h-20 space-x-4 w-full px-20 items-center max-w-xl md:m-auto even:bg-gray-100 hover:bg-gray-400">
                
                  <div className=" ">
               <img src={imgUrl} alt="thumb" className="rounded-full w-12 h-12 items-center text-sm" />

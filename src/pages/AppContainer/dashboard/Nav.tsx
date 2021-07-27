@@ -8,7 +8,7 @@ interface Props{
 
 const Nav: React.FC<Props>=(props)=>{
     return(
-        <div className="bg-secondary flex h-14 w-screen justify-between">
+        <div className="sticky top-0 z-10 bg-secondary flex h-14 w-screen justify-between">
             <div className="flex">
                 <img src="https://designreset.com/cork/ltr/demo4/assets/img/logo.svg" 
                 alt="logo" className="h-12"  />
