@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { logout } from "../../api";
-import Button from "../../components/Button/Button";
+import Button from "../../../components/Button/Button";
 // import DailySalesCard from "./DailySalesCard";
 import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
-import { getGroup } from './../../api';
+import { getGroup, logout } from '../../../api';
 import GroupDisplay from "./GroupDisplay";
 
 
@@ -24,7 +23,7 @@ const Dashboard: React.FC<Props>=(props)=>{
         getGroup({status: "all-groups", query:`${query}`})
         .then((response)=> 
         {      
-                setUsers(response.data);
+                setUsers(response);
 
             }
 

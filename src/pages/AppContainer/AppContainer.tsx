@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 import Recordings from './Recordings.page';
 import Dashboard from './dashboard/Dashboard.page';

@@ -5,9 +5,9 @@ import { FaSpinner } from "react-icons/fa";
 
 import * as yup from "yup";
 import { useFormik } from "formik";
-import ToggleSwitch from "../ToggleSwicth";
-import Button from "../components/Button/Button";
-import { login } from './../api';
+import ToggleSwitch from "../../ToggleSwicth";
+import Button from "../../components/Button/Button";
+import { login } from '../../api/auth';
 
 interface Props {}
 

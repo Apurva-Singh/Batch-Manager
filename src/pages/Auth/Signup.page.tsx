@@ -5,8 +5,8 @@ import { FaSpinner } from "react-icons/fa";
 
 import * as yup from "yup";
 import { useFormik } from "formik";
-import ToggleSwitch from "../ToggleSwicth";
-import AvatarStack from "../components/Avatars/AvatarStack";
+import ToggleSwitch from "../../ToggleSwicth";
+import AvatarStack from "../../components/Avatars/AvatarStack";
 
 interface Props {}
 

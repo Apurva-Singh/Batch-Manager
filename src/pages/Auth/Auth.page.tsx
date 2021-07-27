@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Route, Switch } from "react-router-dom";
-import AuthHero from "../components/AuthHero";
+import AuthHero from "../../components/AuthHero";
 import Login from "./Login.page";
 import Signup from "./Signup.page";
 
