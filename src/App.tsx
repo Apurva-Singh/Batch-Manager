@@ -2,6 +2,7 @@ import React, { FC, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { me } from './api';
 import { LOGIN_TOKEN } from './api/base';
+import AppContext from './App.context';
 import { User } from './models/User';
 import AppContainerPageLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
@@ -14,7 +15,7 @@ import Spinner from "./Spinner.gif";
 
 const App: FC<Props> = () => {
 
-  const [user,setUser]= useState<User>()
+  const [user,setUser]= useState<User>();
   
   const token= localStorage.getItem(LOGIN_TOKEN);
 
@@ -31,6 +32,7 @@ const App: FC<Props> = () => {
   }
 
   return (
+    <AppContext.Provider value={{user,setUser}}>
     <Suspense fallback={<div className="text-green-600 h-screen block " ><img src={Spinner} alt="Loading..." className="h-10 w-10 m-auto mt-auto" /></div>} >
     <div className="font-sans">
   <BrowserRouter>
@@ -41,7 +43,7 @@ const App: FC<Props> = () => {
     </Route>
     <Route path={["/login", "/signup"]} exact>
       
-    {user ? <Redirect to="/dashboard" /> : <AuthLazy onLogin={setUser} /> }
+    {user ? <Redirect to="/dashboard" /> : <AuthLazy /> }
    
     </Route>
     <Route path={["/dashboard","/recordings","/batch/:batchNumber/lecture/:lectureNumber"]} exact>
@@ -55,6 +57,7 @@ const App: FC<Props> = () => {
   </BrowserRouter>
   </div>
   </Suspense>
+  </AppContext.Provider>
   );
 }
 

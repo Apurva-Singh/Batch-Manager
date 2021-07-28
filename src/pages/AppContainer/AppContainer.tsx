@@ -1,7 +1,5 @@
-import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
-
 import Recordings from './Recordings.page';
 import Dashboard from './dashboard/Dashboard.page';
 import LecturePage from "./Lecture.page";
@@ -11,7 +9,8 @@ interface Props{
  user: User;
 }
 
-const AppContainer: React.FC<Props>=({user})=>{
+const AppContainer: React.FC<Props>=(props)=>{
+  
     return(
         <div className="flex flex-row "> 
          <Sidebar></Sidebar>
@@ -20,13 +19,11 @@ const AppContainer: React.FC<Props>=({user})=>{
       <Recordings></Recordings>
     </Route >
     <Route path="/dashboard">
-      <Dashboard user={user}></Dashboard></Route>
+      <Dashboard ></Dashboard></Route>
       <Route path="/batch/:batchNumber/lecture/:lectureNumber"> 
           <LecturePage />
       </Route>
         </Switch>
-        
-      
         </div>
   
     );

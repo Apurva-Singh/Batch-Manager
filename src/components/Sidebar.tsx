@@ -14,6 +14,10 @@ interface Props{
 
 const Sidebar: React.FC<Props>=(props)=>{
     return(
+
+        
+
+
         <div className="fixed h-full overflow-scroll scrol top-26 w-60 z-20 bg-gray-200 border-r-2 border-gray-300 shadow-inner  ">
          <div className="flex-col space-y-4 text-center pt-8 ">
          <div className="flex flex-row items-center p-10 rounded-md hover:bg-gray-400  shadow-md w-52 bg-white m-auto">

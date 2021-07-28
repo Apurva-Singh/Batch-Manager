@@ -8,15 +8,18 @@ import { useFormik } from "formik";
 import ToggleSwitch from "../../ToggleSwicth";
 import Button from "../../components/Button/Button";
 import { login } from '../../api/auth';
-import { User } from "../../models/User";
+import AppContext from './../../App.context';
+import { useContext } from 'react'; 
 
 interface Props {
-onLogin: (user: User) => void;
 
 
 }
 
 const Login: FC<Props> = (props) => {
+
+const { setUser } = useContext(AppContext);
+
   const {
     handleSubmit,
     getFieldProps,
@@ -29,7 +32,10 @@ const Login: FC<Props> = (props) => {
       email: "",
       password: "",
     },
-    validationSchema: yup.object().shape({
+    validationSchema: yup
+    .object()
+    .required()
+    .shape({
       email: yup.string().required().email(),
       password: yup
         .string()
@@ -39,7 +45,7 @@ const Login: FC<Props> = (props) => {
 
     onSubmit: (data) => {
      login(data).then((u)=>{
-       props.onLogin(u!);
+       setUser(u);
        history.push('/dashboard');
      });
     },

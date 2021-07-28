@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import Button from "../../../components/Button/Button";
 // import DailySalesCard from "./DailySalesCard";
@@ -6,14 +6,15 @@ import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
 import { getGroup, logout } from '../../../api';
 import GroupDisplay from "./GroupDisplay";
-import { User } from "../../../models/User";
+import AppContext from './../../../App.context';
 
 
 interface Props{
-    user: User;
 }
 
-const Dashboard: React.FC<Props>=({user})=>{
+const Dashboard: React.FC<Props>=()=>{
+
+    const {user}= useContext(AppContext);
     
     const [reload,setReload]= useState(0);
     const [users, setUsers] = useState<any>([]);
@@ -39,6 +40,8 @@ const Dashboard: React.FC<Props>=({user})=>{
  };
 
     return(
+
+
          <div className="bg-gray-200">
             <Nav />
             <SecondaryNav />
@@ -60,7 +63,7 @@ const Dashboard: React.FC<Props>=({user})=>{
         </div>
         <div className="flex flex-col mt-8 ">
             
-         <div className=" m-auto text-36">Welcome! <span className="text-primary">{user.first_name} </span></div>
+         <div className=" m-auto text-36">Welcome! <span className="text-primary">{user!.first_name} </span></div>
         { users.length ?  <div className="-z-99">
         <h1 className="flex m-auto justify-center text-primary font-bold text-36">Groups</h1>
             { users.map((user: any)=>

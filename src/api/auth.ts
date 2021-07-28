@@ -24,14 +24,13 @@ export const login =(data: LoginData)=>{
 
   return axios
     .post<LoginResponse>(url,data)
-    .then((response) => {
-        console.log("token here", response.data.token);
+    .then((response) => { 
         localStorage.setItem(LOGIN_TOKEN, response.data.token);
         return response.data.user;
     });
     };
 
-export const logout = () =>{
+export const logout = () =>{ 
     localStorage.removeItem(LOGIN_TOKEN);
 };
 
@@ -41,5 +40,5 @@ interface MeResponse{
 
 export const me = () => {
     const url= BASE_URL+ "/me";
-    return axios.get<MeResponse>(url).then(response => response.data.data);
+    return axios.get<MeResponse>(url).then((response) => response.data.data);
 };
