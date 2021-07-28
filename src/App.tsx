@@ -7,6 +7,7 @@ import { User } from './models/User';
 import AppContainerPageLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFound from './pages/NotFound.page';
+import UserProfile from './pages/UserProfile';
 import Spinner from "./Spinner.gif"; 
   interface Props{
 
@@ -48,6 +49,9 @@ const App: FC<Props> = () => {
     </Route>
     <Route path={["/dashboard","/recordings","/batch/:batchNumber/lecture/:lectureNumber"]} exact>
     {user ?  <AppContainerPageLazy user={user!} /> :  <Redirect to="/login"></Redirect>} 
+    </Route>
+    <Route path="/profile" exact>
+      {user && <UserProfile></UserProfile>}
     </Route>
     <Route>
       <NotFound />

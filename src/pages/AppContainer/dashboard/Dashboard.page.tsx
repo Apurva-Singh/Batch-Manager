@@ -4,7 +4,7 @@ import Button from "../../../components/Button/Button";
 // import DailySalesCard from "./DailySalesCard";
 import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
-import { getGroup, logout } from '../../../api';
+import { getGroup } from '../../../api';
 import GroupDisplay from "./GroupDisplay";
 import AppContext from './../../../App.context';
 
@@ -26,7 +26,7 @@ const Dashboard: React.FC<Props>=()=>{
         .then((response)=> 
         {      
                 setUsers(response);
-
+            console.log(response);
             }
 
         ).catch(()=>[
@@ -77,16 +77,6 @@ const Dashboard: React.FC<Props>=()=>{
                
          </div>
         
-        
-    
-         <div className="absolute top-32 right-2">  
-         <Button theme='primary' btnType="solid" isValid={true}
-         onClick={()=>{
-            logout();
-            window.location.href = "/login";
-         }}
-         >Logout</Button>
-             </div>
         </div>
     );
 };

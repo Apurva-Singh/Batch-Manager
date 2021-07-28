@@ -5,7 +5,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement>{
  theme: 'primary'|'secondary';
  children: string;
  type?: 'submit'|'reset' | 'button' | undefined;
- btnType: 'solid' | 'outline';
+ btnType?: 'solid' | 'outline';
  isValid?: boolean;
 }
  
