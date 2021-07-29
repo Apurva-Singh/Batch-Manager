@@ -18,18 +18,18 @@ const SecondaryNav: React.FC<Props>=(props)=>{
  const classDropdown=click ? ('flex flex-col') : 'hidden';
 
     return(
-        <div className="sticky top-14 bg-white z-10">
-        <div className=" flex h-12 justify-between shadow-sm items-center ">
+        <div className="sticky top-14 bg-white z-10 ">
+        <div className=" flex h-12 justify-between shadow-lg items-center ">
             <div className="flex space-x-2">
          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
          <p>Sales</p>
          </div>
          <div>
-             <div className="p-2 text-sm rounded-md h-full flex-col relative" >
-                 <div className="flex flex-row justify-between border-2 border-gray-200 rounded-md items-center">
-                 <Button theme="secondary" onClick={handleClick} >Settings
+             <div className="px-2 text-sm rounded-md md:h-full flex-col relative" >
+                 <div className="flex flex-row justify-between border-2 border-gray-200 rounded-md  h-10 md:h-full items-center">
+                 <Button theme="secondary" onClick={handleClick} className="">Settings
                  </Button>
-                 <BiChevronDown className="h-6 w-6" />
+                 <BiChevronDown className="h-6 w-6 mt-2 md:mt-0" />
                  </div>
                  <div className={"absolute z-10 text-left right-0 bg-white p-8 w-full text-gray-500 space-y-3 rounded-sm "+  classDropdown }>
                     <Link to="/profile" className="hover:text-primary">Profile

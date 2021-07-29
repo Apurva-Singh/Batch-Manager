@@ -26,7 +26,8 @@ const App: FC<Props> = () => {
         }
         me().then((u) => setUser(u));
         return;
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   if(!user && token){
     return <div> Loading....</div>

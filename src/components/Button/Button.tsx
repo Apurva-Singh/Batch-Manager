@@ -23,7 +23,7 @@ const Button: React.FC<Props>=({children,theme,btnType, isValid, className,...re
           
            <button
                {...rest}
-                  className={"disabled:opacity-50 disabled:bg-gray-200 mt-4 sm:mt-0 rounded-md text-14 px-20 py-8 cursor-pointer hover:shadow-none inline-block text-center" + themeClasses +" "+className}
+                  className={"disabled:opacity-50 disabled:bg-gray-200 sm:mt-0 rounded-md text-14 px-20 py-8 cursor-pointer hover:shadow-none inline-block text-center" + themeClasses +" "+className}
                  disabled={!isValid}
                 >
                   {children}

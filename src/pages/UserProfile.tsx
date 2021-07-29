@@ -1,30 +1,34 @@
-import React, { useContext } from "react";
-import AppContext from "../App.context";
+import React, { memo } from "react";
+// import AppContext from "../App.context";
 import Sidebar from "../components/Sidebar";
 import Nav from "./AppContainer/dashboard/Nav";
 import SecondaryNav from "./AppContainer/dashboard/SecondaryNav";
+import ProfileCard from "./ProfileCard";
 
 interface Props{
  
 }
 
 const UserProfile: React.FC<Props>=(props)=>{
-    const {user}= useContext(AppContext);
+
 
 
     
 
     return(
-        <div>
+        <div className="relative bg-gray-200 h-screen overflow-scroll">
             <Nav />
             <SecondaryNav />
+            <div className="hidden md:block">
             <Sidebar/>
-         Profile page
-         <div className="m-auto">{user!.first_name}</div>
+            </div>
+         <div className="  "><ProfileCard/></div>
+         
+      
         </div>
     );
 };
 UserProfile.defaultProps={
 }
 
-export default UserProfile;
+export default memo(UserProfile);

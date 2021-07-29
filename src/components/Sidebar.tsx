@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {AiOutlineHome, AiOutlineUser, AiTwotoneLock} from "react-icons/ai";
 import {BiChevronDown} from "react-icons/bi";
 import DropDowns from "./DropDowns";
@@ -49,4 +49,4 @@ const Sidebar: React.FC<Props>=(props)=>{
 Sidebar.defaultProps={
 }
 
-export default Sidebar;
+export default memo(Sidebar);

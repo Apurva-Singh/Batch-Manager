@@ -13,7 +13,9 @@ const AppContainer: React.FC<Props>=(props)=>{
   
     return(
         <div className="flex flex-row "> 
-         <Sidebar></Sidebar>
+           <div className="hidden md:block">
+            <Sidebar/>
+            </div>
         <Switch>
         <Route path="/recordings">
       <Recordings></Recordings>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import Button from "../../../components/Button/Button";
 // import DailySalesCard from "./DailySalesCard";
@@ -42,7 +42,7 @@ const Dashboard: React.FC<Props>=()=>{
     return(
 
 
-         <div className="bg-gray-200">
+         <div className="bg-gray-200 w-full">
             <Nav />
             <SecondaryNav />
             {/* <p>
@@ -51,8 +51,8 @@ const Dashboard: React.FC<Props>=()=>{
          </Link>
       
          </p> */}
-         <div className="flex space-x-2 items-center max-w-xl justify-center pt-20 mx-auto">
-            <input type="text" id="search" placeholder="Search here.." className="px-2 border-2 rounded-lg h-10 mt-4 sm:mt-1 ml-4 focus:outline-none bg-gray-50 border-gray-400" 
+         <div className="flex space-x-2 items-center md:max-w-xl justify-center pt-20 mx-auto">
+            <input type="text" id="search" placeholder="Search here.." className="px-2 border-2 rounded-lg h-10 mt-2  sm:mt-1 ml-4 focus:outline-none bg-gray-50 border-gray-400" 
            
             onChange={handleChange}/>
              <Button theme="primary" btnType="outline"
@@ -61,7 +61,7 @@ const Dashboard: React.FC<Props>=()=>{
              }}
              >Search</Button>
         </div>
-        <div className="flex flex-col mt-8 ">
+        <div className="flex flex-col mt-8 max-w-sm mx-auto md:pl-40 lg:pl-0 ">
             
          <div className=" m-auto text-36">Welcome! <span className="text-primary">{user!.first_name} </span></div>
         { users.length ?  <div className="-z-99">
@@ -83,4 +83,4 @@ const Dashboard: React.FC<Props>=()=>{
 Dashboard.defaultProps={
 }
 
-export default Dashboard;
+export default memo(Dashboard);
