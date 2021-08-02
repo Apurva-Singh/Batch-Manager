@@ -1,6 +1,8 @@
-import React, { memo, useContext, useState } from "react";
-import AppContext from "../App.context";
+import React, { memo, useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../components/Button/Button";
+import { User } from "../models/User";
+import { AppState } from "../store";
 
 interface Props{
  
@@ -9,8 +11,7 @@ interface Props{
 const ProfileCard: React.FC<Props>=(props)=>{
 
    
-
-    const {user}= useContext(AppContext);
+    const user= useSelector<AppState, User | undefined>((state) => state.me);
 
     const fullname= `${user?.first_name} ${user?.last_name}`;
 

@@ -2,14 +2,12 @@ import { FC, memo } from "react";
 import { Link , useHistory } from "react-router-dom";
 import { HiLockClosed, HiUser } from "react-icons/hi";
 import { FaSpinner } from "react-icons/fa";
-
 import * as yup from "yup";
 import { useFormik } from "formik";
 import ToggleSwitch from "../../ToggleSwicth";
 import Button from "../../components/Button/Button";
 import { login } from '../../api/auth';
-import AppContext from './../../App.context';
-import { useContext } from 'react'; 
+import { useDispatch } from 'react-redux';
 
 interface Props {
 
@@ -18,7 +16,9 @@ interface Props {
 
 const Login: FC<Props> = (props) => {
 
-const { setUser } = useContext(AppContext);
+ const dispatch= useDispatch();
+
+// const { setUser } = useContext(AppContext);
 
   const {
     handleSubmit,
@@ -45,7 +45,7 @@ const { setUser } = useContext(AppContext);
 
     onSubmit: (data) => {
      login(data).then((u)=>{
-       setUser(u);
+      dispatch({type: 'me/fetch', payload: u});
        history.push('/dashboard');
      });
     },
