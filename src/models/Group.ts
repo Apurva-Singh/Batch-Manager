@@ -1,6 +1,6 @@
 export interface Group{
    
-        id: number,
+        id: number 
         name: string,
         group_image_url:  string,
         description: string,

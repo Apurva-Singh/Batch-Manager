@@ -3,14 +3,17 @@ import { Group } from "./models/Group";
 import { User } from "./models/User";
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 
-const ME_FETCH= "me/fetch";
+export const ME_FETCH= "me/fetch";
+export const ME_LOGIN= "me/login";
+export const GROUP_QUERY= "groups/query";
+export const GROUP_QUERY_COMPLETED= "groups/query_completed";
 
 export interface AppState{
     me?: User;
     isSidebarOpen: boolean;
     groupQuery: string;
     groupQueryMap: {[query: string]: number[]}; // {ear:[10,20,45], "omn": [1,99]} group ids matching the keywords
-    grpups:{ [id: number]: Group};
+    groups:{ [id: number]: Group};  // {5: 5th id ka group ka object}
 }
 
 const initialState: AppState = {
@@ -18,18 +21,33 @@ const initialState: AppState = {
     groupQueryMap: {},
     groupQuery:'',
     isSidebarOpen: true,
-    grpups: {}
+    groups: {}
 
 };
 
 
-const reducer: Reducer<AppState, AnyAction> = (currentState = initialState, dispatchedAction: AnyAction) => {
-  switch(dispatchedAction.type) {
+const reducer: Reducer<AppState, AnyAction> = (state = initialState, action: AnyAction) => {
+  switch(action.type) {
       case ME_FETCH:
-      case 'me/login':
-          return {...currentState, me: dispatchedAction.payload}
+      case ME_LOGIN:
+          return {...state, me: action.payload}
+       case GROUP_QUERY:
+           return {...state, groupQuery: action.payload };
+        case GROUP_QUERY_COMPLETED:
+            const groups= action.payload.groups as Group[];
+            const groupIds = groups.map(g => g.id);
+
+         const groupMap = groups.reduce((prev, group) => {
+                return {...prev, [group.id]: group};
+            },{});
+
+
+            return {...state,
+                groupQueryMap: {...state.groupQueryMap, [action.payload.query]: groupIds}, 
+                groups: {...state.groups, ...groupMap},
+            }
        default:
-          return currentState;
+          return state;
   }
 
 };
