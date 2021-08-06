@@ -1,6 +1,6 @@
 import React, { FC, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { authActions } from './actions/auth.actions';
 import { me } from './api';
 import { LOGIN_TOKEN } from './api/base';
 import AppContainerPageLazy from './pages/AppContainer/AppContainer.lazy';
@@ -8,7 +8,7 @@ import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFound from './pages/NotFound.page';
 import UserProfile from './pages/UserProfile';
 import Spinner from "./Spinner.gif"; 
-import { meFetchAction, useAppSelector } from './store';
+import { useAppSelector } from './store';
   interface Props{
 
   }
@@ -16,9 +16,9 @@ import { meFetchAction, useAppSelector } from './store';
 
 const App: FC<Props> = () => {
 
-const user = useAppSelector((state) => state.me);
+const user = useAppSelector((state) => state.auth.id &&  state.users.byId[state.auth.id]);
 
- const dispatch = useDispatch();
+
 
   // const [user,setUser]= useState<User>();
   
@@ -28,7 +28,7 @@ const user = useAppSelector((state) => state.me);
         if(!token){
           return;
         }
-        me().then((u) => dispatch(meFetchAction(u)));
+        me().then((u) => authActions.fetch(u));
         return;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);

@@ -6,8 +6,9 @@ import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
 import { getGroup } from '../../../api';
 import GroupDisplay from "./GroupDisplay";
-import { useAppSelector, GROUP_QUERY_COMPLETED } from './../../../store';
+import { useAppSelector } from './../../../store';
 import { useDispatch } from 'react-redux';
+import { GROUP_QUERY_COMPLETED } from "../../../actions/action.constants";
 
 
 interface Props{
@@ -15,15 +16,15 @@ interface Props{
 
 const Dashboard: React.FC<Props>=()=>{
 
-    const query = useAppSelector(state => state.groupQuery);
+    const query = useAppSelector(state => state.groups.query);
 
     const groups = useAppSelector(state => {
-        const groupIds = state.groupQueryMap[state.groupQuery] ||  [];
-        const groups = groupIds.map(id => state.groups[id]);
+        const groupIds = state.groups.queryMap[state.groups.query] ||  [];
+        const groups = groupIds.map(id => state.groups.byId[id]);
         return groups;
     })
 
-    const userFirstName= useAppSelector((state) => state.me!.first_name);
+    const userFirstName= useAppSelector((state) => state.users.byId[state.auth.id!].first_name);
 
     // const {user}= useContext(AppContext);
     

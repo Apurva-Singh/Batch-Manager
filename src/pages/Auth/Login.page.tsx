@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import ToggleSwitch from "../../ToggleSwicth";
 import Button from "../../components/Button/Button";
 import { login } from '../../api/auth';
-import { useDispatch } from 'react-redux';
+import { authActions } from "../../actions/auth.actions";
 
 interface Props {
 
@@ -16,7 +16,6 @@ interface Props {
 
 const Login: FC<Props> = (props) => {
 
- const dispatch= useDispatch();
 
 // const { setUser } = useContext(AppContext);
 
@@ -45,7 +44,7 @@ const Login: FC<Props> = (props) => {
 
     onSubmit: (data) => {
      login(data).then((u)=>{
-      dispatch({type: 'me/fetch', payload: u});
+      authActions.login(u);
        history.push('/dashboard');
      });
     },
