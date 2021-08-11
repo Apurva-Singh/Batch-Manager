@@ -61,6 +61,6 @@ export const store= createStore(reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
   
-type AppState = ReturnType<typeof store.getState>;
+export type AppState = ReturnType<typeof store.getState>;
 
     export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;

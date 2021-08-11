@@ -1,3 +1,4 @@
+
 import React, { memo } from "react";
 // import AppContext from "../App.context";
 import Sidebar from "../components/Sidebar";
@@ -10,8 +11,6 @@ interface Props{
 }
 
 const UserProfile: React.FC<Props>=(props)=>{
-
-
 
     
 

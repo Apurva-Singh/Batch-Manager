@@ -1,14 +1,15 @@
 import React, { FC, Suspense, useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { authActions } from './actions/auth.actions';
-import { me } from './api';
+import { me } from './middleware/auth.middleware';
 import { LOGIN_TOKEN } from './api/base';
 import AppContainerPageLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFound from './pages/NotFound.page';
 import UserProfile from './pages/UserProfile';
+import { meSelector } from './selectors/auth.selectors';
 import Spinner from "./Spinner.gif"; 
 import { useAppSelector } from './store';
+import GroupsToDisplay from './pages/AppContainer/dashboard/GroupsToDisplay';
   interface Props{
 
   }
@@ -16,11 +17,8 @@ import { useAppSelector } from './store';
 
 const App: FC<Props> = () => {
 
-const user = useAppSelector((state) => state.auth.id &&  state.users.byId[state.auth.id]);
+const user = useAppSelector(meSelector);
 
-
-
-  // const [user,setUser]= useState<User>();
   
   const token= localStorage.getItem(LOGIN_TOKEN);
 
@@ -28,10 +26,11 @@ const user = useAppSelector((state) => state.auth.id &&  state.users.byId[state.
         if(!token){
           return;
         }
-        me().then((u) => authActions.fetch(u));
+         me();
         return;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
+
 
   if(!user && token){
     return <div> Loading....</div>
@@ -58,6 +57,11 @@ const user = useAppSelector((state) => state.auth.id &&  state.users.byId[state.
     <Route path="/profile" exact>
       {user && <UserProfile></UserProfile>}
     </Route>
+    <Route path="/groups" exact>
+      {user && <GroupsToDisplay></GroupsToDisplay>
+      }
+    </Route>
+
     <Route>
       <NotFound />
     </Route>

@@ -20,7 +20,7 @@ interface LoginResponse{
 
 export const login =(data: LoginData)=>{
   const url=BASE_URL + "/login";
-  console.log(data);
+  console.log("data ",data);
 
   return axios
     .post<LoginResponse>(url,data)

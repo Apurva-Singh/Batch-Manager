@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes } from "react";
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement>{
  theme: 'primary'|'secondary';
  children: string;
- type?: 'submit'|'reset' | 'button' | undefined;
+ type?: 'submit' | 'reset' | 'button' | undefined;
  btnType?: 'solid' | 'outline';
  isValid?: boolean;
 }

@@ -2,19 +2,19 @@ import axios from "axios";
 import { Group } from "../models/Group";
 import { BASE_URL, LOGIN_TOKEN } from "./base";
 
-interface GetGroupRequest{
+export interface GetGroupRequest{
     limit?: number;
     offset?: number;
     status: "all-groups";
-    query?: string;
+    query: string;
 }
 
-interface GroupResponse{
+export interface GroupResponse{
     data: Group[];
 }
 
 
-export const getGroup = (data: GetGroupRequest) => {
+export const getGroups = (data: GetGroupRequest) => {
     const url= BASE_URL + "/groups";
     const token= localStorage.getItem(LOGIN_TOKEN);
 
@@ -22,5 +22,21 @@ export const getGroup = (data: GetGroupRequest) => {
     .then((response)=> {
         const data= response.data.data;
         return data;
-    })
+    });
 }
+
+export const getGroupById = (groupId: number) => {
+    const url= `${BASE_URL}/groups/${groupId}`;
+    const token= localStorage.getItem(LOGIN_TOKEN);
+
+    return axios.get<GroupResponse>(url,{headers:{Authorization: token}})
+    .then((response)=> {
+        const data= response.data.data;
+        return data;
+    })
+
+
+}
+
+
+

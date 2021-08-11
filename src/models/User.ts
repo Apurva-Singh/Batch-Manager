@@ -1,5 +1,8 @@
-export interface User{
-    id:number,
+
+import { Entity } from './Entitiy';
+ 
+export interface User extends Entity{
+    
     first_name: string,
     middle_name: string,
     last_name: string,
