@@ -12,7 +12,6 @@ export const getGroups = (request: GetGroupRequest) => {
     
     const query= request.query;
     const groupIds: number[] = queryMap[query];
-    
     groupActions.query(query, !groupIds); 
 
     if(groupIds){
