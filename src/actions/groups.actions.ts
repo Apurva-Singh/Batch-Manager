@@ -5,9 +5,9 @@ import { store } from '../store';
 import { GROUP_QUERY, GROUP_QUERY_COMPLETED } from './action.constants';
 
 
-export const groupsQueryAction = (query: string, loading: boolean) => ({
+export const groupsQueryAction = (query: string) => ({
     type: GROUP_QUERY,
-    payload: {query, loading},
+    payload: {query},
 });
 
 export const groupsQueryActionCompleted = (query: string, groups: Group[]) => ({

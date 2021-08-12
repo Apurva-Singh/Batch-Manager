@@ -5,7 +5,7 @@ import { useAppSelector } from "../../../store";
 import GroupDisplay from "./GroupDisplay";
 import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
-import { groupLoadingSelector } from './../../../selectors/groups.selectors';
+import { groupsLoadingSelector } from './../../../selectors/groups.selectors';
 import { FaSpinner } from "react-icons/fa";
 import { GROUP_QUERY_COMPLETED } from "../../../actions/action.constants";
 import { useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ interface Props{
 
 const GroupsToDisplay: React.FC<Props>=(props)=>{
     const query = useAppSelector(groupQuerySelector);
-  const loading= useAppSelector(groupLoadingSelector);
+  const loading= useAppSelector(groupsLoadingSelector);
   const groups = useAppSelector(groupSelector);
 
   const user = useAppSelector(meSelector);
@@ -103,7 +103,7 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
             Groups
           </h1>
         </div>
-        {groups.length > 0 ? (
+        {groups.length > 0 && !loading ? (
           <div className="-z-99">
             {groups.map((group) => (
               <GroupDisplay

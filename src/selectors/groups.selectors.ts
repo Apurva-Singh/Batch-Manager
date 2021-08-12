@@ -40,15 +40,15 @@ export const groupByIdSelector = createSelector([groupStateSelector],
 //     return groups;
 // }
  
-export const groupLoadingQuerySelector = createSelector(
+export const groupsLoadingSelector = createSelector(
     [groupStateSelector],
-     (groupState) => groupState.loadingQuery 
+     (groupState) => groupState.loading 
      );  // {omn: loading true}
 
-export const groupLoadingSelector = createSelector(
-    [groupQuerySelector, groupLoadingQuerySelector], (query, loadingMap) => 
-    loadingMap[query]
-);
+// export const groupLoadingSelector = createSelector(
+//     [groupQuerySelector, groupLoadingQuerySelector], (query, loadingMap) => 
+//     loadingMap[query]
+// );
 
 // export const groupSelector = (state: AppState) => {
 //     const query= groupQuerySelector(state);

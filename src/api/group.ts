@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { CancelToken } from "axios";
 import { Group } from "../models/Group";
 import { BASE_URL, LOGIN_TOKEN } from "./base";
 
@@ -14,11 +14,11 @@ export interface GroupResponse{
 }
 
 
-export const getGroups = (data: GetGroupRequest) => {
+export const getGroups = (data: GetGroupRequest, tokenSourceToken: CancelToken) => {
     const url= BASE_URL + "/groups";
     const token= localStorage.getItem(LOGIN_TOKEN);
 
-    return axios.get<GroupResponse>(url,{ params: data,headers:{Authorization: token}})
+    return axios.get<GroupResponse>(url,{ params: data, cancelToken: tokenSourceToken})
     .then((response)=> {
         const data= response.data.data;
         return data;
