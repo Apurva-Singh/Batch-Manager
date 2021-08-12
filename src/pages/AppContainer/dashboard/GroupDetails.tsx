@@ -4,34 +4,49 @@ import { GROUP_QUERY_COMPLETED } from "../../../actions/action.constants";
 import { getGroupById } from "../../../api/group";
 import { Group } from "../../../models/Group";
 import { GET_GROUP } from './../../../actions/action.constants';
+import { Link, useParams } from 'react-router-dom';
+import Nav from "./Nav";
+import SecondaryNav from "./SecondaryNav";
+import { useAppSelector } from "../../../store";
+import { groupByIdSelector } from './../../../selectors/groups.selectors';
+import { fetchOneGroup } from "../../../actions/groups.actions";
 
-interface Props extends Group{
+interface Props{
 
 }
 
 const GroupDetails: React.FC<Props>=(props)=>{
 
+  const groupId = +useParams<{ groupId: string}>().groupId;
     
-  const dispatch = useDispatch();
+  const groupByIds = useAppSelector(groupByIdSelector);
   
+  const group = groupByIds[groupId];
+  const dispatch = useDispatch();
 
-  useEffect(() => {
- 
 
-    getGroupById(23).then((group) => {
-      dispatch({
-        type: GET_GROUP,
-        payload: {group},
-      });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-    
-    
+    useEffect(() => {
+        dispatch(fetchOneGroup(groupId));
+    }, [groupId]);
     
     return(
-        <div>
-         
+    
+      <div className="bg-gray-200 ml-auto h-screen">
+    
+        
+    <div className="flex rounded-md shadow-sm transform hover:-translate-y-1 hover:text-blue-800 ease-in-out text-xs md:text-lg h-20 space-x-4 w-full px-20 items-center max-w-xl md:m-auto even:bg-gray-100 hover:bg-gray-400"
+ 
+ >
+        
+          <div className=" ">
+       <img src={group.group_image_url} alt="thumb" className="rounded-full w-12 h-12 items-center text-sm" />
+       </div>
+       <div className="flex-col" >
+         <p className=" font-semibold">{group.name}</p>
+         <p className="text-primary text-14">{group.description}</p>
+         </div>
+       
+     </div>
         </div>
     );
 };

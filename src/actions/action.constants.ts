@@ -6,7 +6,7 @@ export const MODIFY_USER= "me/modify";
 
 // Groups
 
-
+export const GROUP_FETCH_ONE = "groups/fetch_one";
 export const GROUP_QUERY= "groups/query";
 export const GROUP_QUERY_COMPLETED= "groups/query_completed";
 export const GET_GROUP = `groups/id`;

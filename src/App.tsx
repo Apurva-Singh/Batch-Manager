@@ -51,7 +51,8 @@ const user = useAppSelector(meSelector);
     {user ? <Redirect to="/dashboard" /> : <AuthLazy /> }
    
     </Route>
-    <Route path={["/dashboard","/recordings","/batch/:batchNumber/lecture/:lectureNumber"]} exact>
+    <Route path={["/dashboard","/recordings","/batch/:batchNumber/lecture/:lectureNumber",
+     "/groups/:groupId"]} exact>
     {user ?  <AppContainerPageLazy user={user!} /> :  <Redirect to="/login"></Redirect>} 
     </Route>
     <Route path="/profile" exact>

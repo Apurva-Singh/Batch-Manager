@@ -10,6 +10,7 @@ import { FaSpinner } from "react-icons/fa";
 import { GROUP_QUERY_COMPLETED } from "../../../actions/action.constants";
 import { useDispatch } from "react-redux";
 import { getGroups } from "../../../middleware/groups.middleware";
+import { useHistory } from 'react-router-dom';
 
 interface Props{
  
@@ -21,7 +22,7 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
   const groups = useAppSelector(groupSelector);
 
   const user = useAppSelector(meSelector);
-
+  const history = useHistory();
   // const {user}= useContext(AppContext);
 
   // const [reload, setReload] = useState(0);
@@ -112,6 +113,8 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
                 imgUrl={group.group_image_url}
                 key={group.id}
                 description={group.description}
+              
+                
               />
             ))}
           </div>

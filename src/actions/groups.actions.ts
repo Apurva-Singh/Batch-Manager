@@ -2,7 +2,7 @@
 import { bindActionCreators } from 'redux';
 import { Group } from '../models/Group';
 import { store } from '../store';
-import { GROUP_QUERY, GROUP_QUERY_COMPLETED } from './action.constants';
+import { GROUP_FETCH_ONE, GROUP_QUERY, GROUP_QUERY_COMPLETED } from './action.constants';
 
 
 export const groupsQueryAction = (query: string) => ({
@@ -21,3 +21,9 @@ export const groupActions = bindActionCreators({
     query_completed: groupsQueryActionCompleted
     },store.dispatch);
     
+
+export const fetchOneGroup = (id: number) => ({
+    type: GROUP_FETCH_ONE,
+    payload: id
+
+})

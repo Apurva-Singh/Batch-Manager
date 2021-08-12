@@ -4,6 +4,9 @@ import Recordings from './Recordings.page';
 import Dashboard from './dashboard/Dashboard.page';
 import LecturePage from "./Lecture.page";
 import { User } from "../../models/User";
+import GroupDetails from './dashboard/GroupDetails';
+import Nav from "./dashboard/Nav";
+import SecondaryNav from "./dashboard/SecondaryNav";
 
 interface Props{
  user: User;
@@ -12,7 +15,10 @@ interface Props{
 const AppContainer: React.FC<Props>=(props)=>{
   
     return(
-        <div className="flex flex-row "> 
+      
+        <div className=""> 
+          <Nav />
+      <SecondaryNav />
            <div className="hidden md:block">
             <Sidebar/>
             </div>
@@ -25,6 +31,9 @@ const AppContainer: React.FC<Props>=(props)=>{
       <Route path="/batch/:batchNumber/lecture/:lectureNumber"> 
           <LecturePage />
       </Route>
+      <Route path="/groups/:groupId">
+      <GroupDetails></GroupDetails>
+    </Route >
         </Switch>
         </div>
   
