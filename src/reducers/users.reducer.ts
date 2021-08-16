@@ -3,7 +3,6 @@ import { User } from './../models/User';
 import { Reducer } from 'redux';
 import { ME_FETCH, ME_LOGIN } from '../actions/action.constants';
 import { EntityState, addOne } from './entity.reducer';
-import { MODIFY_USER } from './../actions/action.constants';
 
 export interface UserState extends EntityState<User> {}
 

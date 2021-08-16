@@ -62,6 +62,8 @@ export const groupsLoadingSelector = createSelector(
 export const groupSelector= createSelector([groupQuerySelector, groupQueryMapSelector, groupByIdSelector],
     (query, queryMap, byId) => {
         const groupIds = queryMap[query] ||  [];
+       
             const groups = groupIds.map(id => byId[id]);
+            
             return groups;
     });

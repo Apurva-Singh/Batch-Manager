@@ -16,7 +16,6 @@ export interface GroupResponse{
 
 export const getGroups = (data: GetGroupRequest, tokenSourceToken: CancelToken) => {
     const url= BASE_URL + "/groups";
-    const token= localStorage.getItem(LOGIN_TOKEN);
 
     return axios.get<GroupResponse>(url,{ params: data, cancelToken: tokenSourceToken})
     .then((response)=> {

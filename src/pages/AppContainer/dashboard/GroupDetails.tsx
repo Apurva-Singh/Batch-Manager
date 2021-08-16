@@ -1,19 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { GROUP_QUERY_COMPLETED } from "../../../actions/action.constants";
-import { getGroupById } from "../../../api/group";
-import { Group } from "../../../models/Group";
-import { GET_GROUP } from './../../../actions/action.constants';
-import { Link, useParams } from 'react-router-dom';
-import Nav from "./Nav";
-import SecondaryNav from "./SecondaryNav";
+import { useParams } from 'react-router-dom';
 import { useAppSelector } from "../../../store";
 import { groupByIdSelector } from './../../../selectors/groups.selectors';
 import { fetchOneGroup } from "../../../actions/groups.actions";
 
-interface Props{
-
-}
+interface Props{}
 
 const GroupDetails: React.FC<Props>=(props)=>{
 

@@ -1,4 +1,3 @@
-import Button from "../../../components/Button/Button";
 import { meSelector } from "../../../selectors/auth.selectors";
 import { groupQuerySelector, groupSelector } from "../../../selectors/groups.selectors";
 import { useAppSelector } from "../../../store";
@@ -7,10 +6,8 @@ import Nav from './Nav';
 import SecondaryNav from "./SecondaryNav";
 import { groupsLoadingSelector } from './../../../selectors/groups.selectors';
 import { FaSpinner } from "react-icons/fa";
-import { GROUP_QUERY_COMPLETED } from "../../../actions/action.constants";
 import { useDispatch } from "react-redux";
-import { getGroups } from "../../../middleware/groups.middleware";
-import { useHistory } from 'react-router-dom';
+import { groupsQueryChangedAction } from './../../../actions/groups.actions';
 
 interface Props{
  
@@ -22,7 +19,7 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
   const groups = useAppSelector(groupSelector);
 
   const user = useAppSelector(meSelector);
-  const history = useHistory();
+  // const history = useHistory();
   // const {user}= useContext(AppContext);
 
   // const [reload, setReload] = useState(0);
@@ -30,7 +27,7 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
 
   // const [query, setQuery]= useState('');
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   
 
   // useEffect(() => {
@@ -77,8 +74,10 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
           className="px-2 border-2 rounded-lg h-10 mt-2  sm:mt-1 ml-4 focus:outline-none bg-gray-50 border-gray-400"
           defaultValue={query}
           onChange={(e) => {  
-            console.log(e.target.value);
-            getGroups({query: e.target.value, status: "all-groups"});
+            dispatch(groupsQueryChangedAction(e.target.value));
+            // groupActions.queryChanged(e.target.value);
+
+            // getGroups({query: e.target.value, status: "all-groups"});
             
             // dispatch({ type: "groups/query", payload: e.target.value });
           }}
@@ -104,7 +103,8 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
             Groups
           </h1>
         </div>
-        {groups.length > 0 && !loading ? (
+        {
+        groups.length > 0 && !loading ? (
           <div className="-z-99">
             {groups.map((group) => (
               <GroupDisplay
@@ -119,7 +119,7 @@ const GroupsToDisplay: React.FC<Props>=(props)=>{
             ))}
           </div>
         ) : (
-          <div className="text-red-600 m-auto"> No results found </div>
+          <div className="text-red-600 m-auto"> No results to display </div>
         )}
       </div>
         </div>
